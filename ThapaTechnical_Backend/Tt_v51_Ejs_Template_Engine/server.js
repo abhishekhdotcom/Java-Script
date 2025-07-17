@@ -30,6 +30,7 @@ app.get("/reports", async (req, res) => {
     { name: "Hitesh", age: 38, subject: "JavaScript Programming" },
     { name: "Harry", age: 27, subject: "C Programming" },
     { name: "Harsh", age: 28, subject: "Python Programming" },
+    { name: "Sharadha", age: 27, subject: "Rubi Programming" },
   ];
   res.render("reportCard", { studentData });
 });
