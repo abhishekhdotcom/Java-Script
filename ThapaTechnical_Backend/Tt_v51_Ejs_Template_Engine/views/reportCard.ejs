@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Report Card</title>
+    </head>
+
+    <body>
+        <h1>
+            Student Report card
+        </h1>
+        <% studentData.forEach(data=> { %>
+            <ul>
+                <li>Name: <%= data.name %>
+                </li>
+                <li>Age: <%= data.age %>
+                </li>
+                <li>Subject: <%= data.subject %>
+                </li>
+            </ul>
+            <hr/>
+            <% }) %>
+    </body>
+
+</html>
