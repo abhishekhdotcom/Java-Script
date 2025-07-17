@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cart</title>
+        <link rel="stylesheet" href="/stylesheets/output.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    </head>
+
+    <body class="bg-gray-200 text-gray-900">
+        <!-- Header Include -->
+        <%- include('partials/header') %>
+
+            <!-- Flash Message Include -->
+            <%- include('partials/flashMessage') %>
+
+                <div class="min-h-screen flex items-center justify-center px-4 py-5">
+                    <div class="w-full max-w-xl bg-white rounded-2xl shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-4">Cart</h2>
+
+                        <!-- Cart Items -->
+                        <div class="space-y-3" id="cart-items-container">
+                            <% if (cartItems.length===0) { %>
+                                <div class="text-center py-10">
+                                    <i class="fas fa-shopping-cart fa-3x text-gray-300 mb-4"></i>
+                                    <p class="text-gray-500">Your cart is empty</p>
+                                </div>
+                                <% } else { %>
+                                    <% cartItems.forEach(item=> { %>
+                                        <div class="flex items-center justify-between hover:bg-gray-200 px-2 rounded-lg"
+                                            data-item-id="<%= item._id %>">
+                                            <!-- Left: Image + Info -->
+                                            <div class="flex items-center space-x-4">
+                                                <img src="data:<%= item.productImage.productImageType %>;base64,<%= item.productImage.toString('base64') %>"
+                                                    alt="<%= item.brandName %>"
+                                                    class="w-15 h-15 rounded-lg object-cover border"
+                                                    style="background-color: <%= item.bgColor %>" />
+                                                <div>
+                                                    <small
+                                                        class="text-xs font-mono text-white bg-orange-400 w-fit px-2 rounded-xl">
+                                                        <%= item.category %>
+                                                    </small>
+                                                    <h3 class="text-sm font-medium">
+                                                        <%= item.productName %>
+                                                    </h3>
+                                                    <p class="text-xs text-gray-400 font-semibold">
+                                                        Model: <%= item.model %>
+                                                    </p>
+                                                    <p class="text-xs text-violet-500 font-serif">
+                                                        Brand: <%= item.brandName %>
+                                                    </p>
+
+                                                    <!-- Price -->
+                                                    <div>
+                                                        <% if (item.discount> 0 && item.discount <= 100) { %>
+                                                                <span class="text-xs font-medium text-gray-900"
+                                                                    aria-label="Price <%= ((item.price || 0) * (1 - item.discount / 100)).toFixed(2) %> rupees">
+                                                                    ₹<%= ((item.price || 0) * (1 - item.discount /
+                                                                        100)).toFixed(2).toLocaleString('en-IN') %>
+                                                                </span>
+                                                                <span class="text-gray-500 line-through text-xs ml-1"
+                                                                    aria-label="Original price <%= (item.price || 0) %> rupees">
+                                                                    ₹<%= (item.price || 0).toLocaleString('en-IN') %>
+                                                                </span>
+                                                                <% } else { %>
+                                                                    <span class="text-xs font-medium text-gray-900"
+                                                                        aria-label="Price <%= (item.price || 0) %> rupees">
+                                                                        ₹<%= (item.price ||
+                                                                            0).toFixed(2).toLocaleString('en-IN') %>
+                                                                    </span>
+                                                                    <% } %>
+                                                                        <!-- Discount Offers -->
+                                                                        <% if (item.discount> 0) { %>
+                                                                            <span
+                                                                                class="bg-green-100 text-green-800 px-1 rounded-full text-xs font-mono ml-1">
+                                                                                <%= item.discount %>% OFF
+                                                                            </span>
+                                                                            <% } %>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Right: Quantity + Delete -->
+                                            <div class="flex items-center space-x-3">
+                                                <div class="flex items-center border rounded-md px-2 text-sm">
+                                                    <button
+                                                        class="px-2 hover:text-red-500 decrease-quantity border-r border-gray-600 cursor-pointer"
+                                                        data-item-id="<%= item._id %>" aria-label="Decrease quantity">
+                                                        <i class="fa-duotone fa-solid fa-minus fa-sm"></i>
+                                                    </button>
+                                                    <span class="px-1 quantity">
+                                                        <%= item.quantity %>
+                                                    </span>
+                                                    <button
+                                                        class="px-2 hover:text-green-600 increase-quantity border-l border-gray-600 cursor-pointer"
+                                                        data-item-id="<%= item._id %>" aria-label="Increase quantity">
+                                                        <i class="fa-duotone fa-solid fa-plus fa-sm"></i>
+                                                    </button>
+                                                </div>
+                                                <!-- remove cart item -->
+                                                <button class="text-gray-400 hover:text-red-500 remove-cart-btn"
+                                                    aria-label="Remove item <%= item._id %>"
+                                                    data-cart-id="<%= item._id %>">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                        </div>
+
+                        <!-- Summary -->
+                        <% if (cartItems.length> 0) { %>
+                            <div class="mt-6 border-t pt-4 space-y-2 text-sm" id="cart-summary">
+                                <div class="flex justify-between">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">₹<%= subtotal.toFixed(2) %></span>
+                                </div>
+                                <div class="flex justify-between text-green-600">
+                                    <span>Discount</span>
+                                    <span>− ₹<span id="discount-amount">
+                                            <%= discount.toFixed(2) %>
+                                        </span></span>
+                                </div>
+                                <div class="flex justify-between text-gray-500">
+                                    <span>Tax 18%</span>
+                                    <span>+ ₹<span id="tax-amount">
+                                            <%= tax.toFixed(2) %>
+                                        </span></span>
+                                </div>
+                                <div class="flex justify-between font-semibold text-base pt-2 border-t mt-2">
+                                    <span>Total</span>
+                                    <span>₹<span id="total-amount">
+                                            <%= total.toFixed(2) %>
+                                        </span></span>
+                                </div>
+                            </div>
+
+                            <!-- CTA Buttons -->
+                            <div class="mt-6 space-y-2">
+                                <button onclick="payNow()"
+                                    class="w-full cursor-pointer block text-center bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition">Pay
+                                    Now</button>
+
+                                <a href="/products/shop"
+                                    class="w-full block text-center border border-gray-300 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+                                    Continue shopping
+                                </a>
+                            </div>
+                            <% } else { %>
+                                <div class="mt-6">
+                                    <a href="/products/shop"
+                                        class="w-full block text-center bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 transition">
+                                        Start Shopping
+                                    </a>
+                                </div>
+                                <% } %>
+                    </div>
+                </div>
+
+                <script>
+                    const amount = `<%= Math.ceil(total) %>`
+                </script>
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <script src="/javascripts/RazorPay.js"></script>
+                <!-- Scripts -->
+                <script src="/javascripts/searchAndMenuToggle.js"></script>
+                <script src="/javascripts/profileToggle.js"></script>
+                <script src="/javascripts/flashMessage.js"></script>
+                <script src="/javascripts/cartRemove.js"></script>
+                <script src="/javascripts/cartQuantityUpdate.js"></script>
+    </body>
+
+</html>
