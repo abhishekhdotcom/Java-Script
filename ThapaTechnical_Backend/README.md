@@ -53,7 +53,7 @@ This series by **thapa Technical by Vinod Sir** is designed to take you from zer
 
 ```bash
 # 1. Clone the repo or follow along with your own folder
-git clone https://github.com/Abhishekh1516techboy/Java-Script/ThapaTechnical_Backend.git
+git clone https://github.com/Abhishekhdotcom/Java-Script/ThapaTechnical_Backend.git
 
 # 2. Navigate into the project
 cd ThapaTechnical_Backend
