@@ -1,0 +1,25 @@
+{
+  "name": "tt_v75_handling_userregistration_store_data",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "@Abhishekhdotcom",
+  "license": "ISC",
+  "description": "Drizzle ORM Handling user registration store Data by Vinod Thapa sir (30/7/2025 - 9:49PM)",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}
