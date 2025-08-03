@@ -1,0 +1,26 @@
+{
+  "name": "tt_v78_hash_password_with_argon2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "@Abhishekhdotcom",
+  "license": "ISC",
+  "description": "Hash Passwor with Argon2 by Vinod Thapa sir (3/8/2025 - 7:24PM)",
+  "dependencies": {
+    "argon2": "^0.43.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}

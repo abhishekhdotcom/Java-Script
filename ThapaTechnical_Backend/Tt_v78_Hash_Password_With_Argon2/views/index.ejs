@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home - MyApp</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body class="bg-gray-100 font-sans">
+        <!-- Header -->
+        <%- include('partials/header') %>
+
+            <!-- Hero Section -->
+            <section class="bg-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to X-APP</h1>
+                    <p class="text-lg text-gray-600 mb-8">Discover a world of possibilities with our platform. Join us
+                        today!</p>
+                    <a href="/api/v1/auth/register"
+                        class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition-colors">Get
+                        Started</a>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section class="py-16 bg-gray-100">
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-gray-800 text-white py-5 fixed bottom-0 left-0 w-full">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <p>&copy; 2025 X-APP. All rights reserved.</p>
+                </div>
+            </footer>
+    </body>
+
+</html>
