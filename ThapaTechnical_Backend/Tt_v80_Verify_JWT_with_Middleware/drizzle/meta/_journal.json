@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1753810698840,
+      "tag": "0000_smart_sage",
+      "breakpoints": true
+    }
+  ]
+}
