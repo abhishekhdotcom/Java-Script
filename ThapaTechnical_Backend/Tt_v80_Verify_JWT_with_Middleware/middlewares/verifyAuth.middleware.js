@@ -21,7 +21,7 @@ export default async (req, res, next) => {
       res.clearCookie("accessToken"); // Clear invalid token from cookies
       return res.status(401).redirect("/api/v1/auth/login");
     }
-    console.log(user);
+    
     req.user = user; // Attach user data to req
     return next(); // Proceed to the next middleware/route
   } catch (error) {

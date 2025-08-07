@@ -13,10 +13,16 @@
     <body class="bg-gray-100 font-sans">
         <!-- Header -->
         <%- include('partials/header') %>
-
-            <div class="container flex items-center justify-center">
-                <h1 class="font-bold text-4xl">User Profile Page!</h1>
-            </div>
+            <% if (user) { %>
+                <h1 class="bg-red-500 w-full text-sm text-white font-mono flex justify-end pr-2">
+                    <%= user.email %>
+                </h1>
+                <% } %>
+                    <div class="container flex items-center justify-center">
+                        <h1 class="font-bold text-4xl">
+                           Hello Mr.<%= user.name %>
+                        </h1>
+                    </div>
     </body>
 
 </html>

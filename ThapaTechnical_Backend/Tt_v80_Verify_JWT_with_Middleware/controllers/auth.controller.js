@@ -81,8 +81,5 @@ export const loginUser = async (req, res) => {
 
 // -------------------Render user Profile page-------------------
 export const profilePage = (req, res) => {
-  res.render("profile", {
-    email: "abhishekhkumar1516@gmail.com",
-    name: "ABhishekh Kumar",
-  });
+  res.render("profile", { user: req.user });
 };
