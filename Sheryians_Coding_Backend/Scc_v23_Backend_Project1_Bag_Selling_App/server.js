@@ -36,7 +36,6 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: process.env.NODE_ENV === "production" }, // Secure in production
   })
 );
 app.use(flash()); // Initialize connect-flash
