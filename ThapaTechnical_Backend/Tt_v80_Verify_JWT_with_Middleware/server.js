@@ -3,6 +3,7 @@ import path from "path"; // Node.js module for handling file paths
 import { fileURLToPath } from "url"; // Convert ES module URLs to file paths
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import { verifyToken } from "./services/auth.services.js";
 
 const app = express(); // Initialize Express app
 dotenv.config(); // Load environment variables from .env file
@@ -22,7 +23,19 @@ app.use(cookieParser()); // cookie parser
 
 // Index Route (Home-Page)
 app.get("/", (req, res) => {
-  res.render("index");
+  let user = null;
+  if (req.cookies?.accessToken) {
+    const decoded = verifyToken(req.cookies.accessToken);
+    user = decoded;
+  }
+
+  res.render("index", { user });
+});
+
+// Logout (POST for security)
+app.post("/logout", async (req, res) => {
+  res.clearCookie("accessToken");
+  return res.redirect("/");
 });
 
 // routes

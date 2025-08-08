@@ -8,7 +8,13 @@ import {
 
 // -------------------Render user Register page-------------------
 export const registerPage = (req, res) => {
-  res.render("userRegister");
+  let user = null;
+  if (req.cookies?.accessToken) {
+    const decoded = verifyToken(req.cookies.accessToken);
+    user = decoded;
+  }
+
+  res.render("userRegister", { user });
 };
 
 // ----------------Register user----------------
@@ -40,7 +46,13 @@ export const registerUser = async (req, res) => {
 
 // -------------------Render user Login page-------------------
 export const loginPage = (req, res) => {
-  res.render("userLogin");
+  let user = null;
+  if (req.cookies?.accessToken) {
+    const decoded = verifyToken(req.cookies.accessToken);
+    user = decoded;
+  }
+
+  res.render("userLogin", { user });
 };
 
 // ----------------Login user----------------
