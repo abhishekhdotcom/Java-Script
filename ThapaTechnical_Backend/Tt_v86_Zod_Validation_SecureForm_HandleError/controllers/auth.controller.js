@@ -6,7 +6,10 @@ import {
   generateToken,
   verifyToken,
 } from "../services/auth.services.js";
-import { loginUserSchema, registerUserSchema } from "../validators/auth.validator.js";
+import {
+  loginUserSchema,
+  registerUserSchema,
+} from "../validators/auth.validator.js";
 
 // -------------------Render user Register page-------------------
 export const registerPage = (req, res) => {
@@ -27,7 +30,8 @@ export const registerUser = async (req, res) => {
   const { data, error } = registerUserSchema.safeParse(req.body);
 
   if (error) {
-    req.flash("error", "Form validatio Fail!");
+    const errors = error.issues[0].message;
+    req.flash("error", errors);
     return res.redirect("/api/v1/auth/register");
   }
 
@@ -77,7 +81,8 @@ export const loginUser = async (req, res) => {
   const { data, error } = loginUserSchema.safeParse(req.body);
 
   if (error) {
-    req.flash("error", "Form validatio Fail!");
+    const errors = error.issues[0].message;
+    req.flash("error", errors);
     return res.redirect("/api/v1/auth/login");
   }
 
