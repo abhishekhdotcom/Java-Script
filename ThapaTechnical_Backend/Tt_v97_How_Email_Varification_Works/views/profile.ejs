@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= user.name %> Profile Page
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    </head>
+
+    <body class="bg-gray-100 font-sans flex flex-col items-center min-h-screen">
+        <%- include('partials/header') %>
+            <div class="container max-w-6xl p-4 mx-auto">
+                <!-- Logged in Status -->
+                <div class="bg-green-200 text-green-800 text-sm font-semibold p-2 rounded mb-6 text-center">
+                    ✓ You are logged in
+                </div>
+                <!-- Profile Header -->
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h2 class="text-2xl font-semibold text-center mb-6">Your Profile</h2>
+                    <div class="bg-blue-500 text-white p-6 rounded-lg flex items-center space-x-6">
+                        <div class="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center">
+                            <span class="text-blue-500 font-bold text-2xl">
+                                <%= user.name.charAt(0).toUpperCase() %>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">
+                                <%= user.name.toUpperCase() %>
+                            </h3>
+                            <p class="text-sm">✉ <%= user.email %>
+                            </p>
+                            <p class="text-sm">📅 Member since <%= user.createdAt.toLocaleDateString() %>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Stats -->
+                    <div class="flex justify-end mt-6 text-gray-600">
+                        <p><strong>Last Active: </strong>
+                            <%= user.updatedAt.toLocaleDateString() %>
+                        </p>
+                    </div>
+                    <!-- Verification Status -->
+                    <div class="mt-6">
+                        <p class="">
+                            <span class="font-bold text-gray-600">Email Verification:</span>
+                            <% if (user.isValidEmail) { %>
+                                <span class="text-white bg-green-500 rounded-lg px-1.5">
+                                    <i class="zmdi zmdi-check-circle"></i> Verified
+                                </span>
+                                <% } else { %>
+                                    <span class="text-white bg-red-500 rounded-lg px-1.5">
+                                        <i class="zmdi zmdi-alert-circle"></i> Not Verified
+                                    </span>
+                                    <a href="resend-verification" class="text-blue-600 ml-1 hover:text-blue-800">
+                                        <i class="zmdi zmdi-mail-send"></i> Verify Now
+                                    </a>
+                                    <% } %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="flex justify-center gap-4 mt-6">
+                    <a href="/edit/profile"
+                        class="bg-blue-400 text-white px-6 py-2 rounded-lg hover:bg-blue-500 transition">✏️ Edit
+                        Profile</a>
+                    <a href="/change/password"
+                        class="bg-blue-400 text-white px-6 py-2 rounded-lg hover:bg-blue-500 transition">🔑 Change
+                        Password</a>
+                </div>
+            </div>
+    </body>
+
+</html>
