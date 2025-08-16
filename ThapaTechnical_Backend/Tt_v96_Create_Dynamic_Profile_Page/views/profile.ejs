@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= user.name %> Profile Page
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body class="bg-gray-100 font-sans flex flex-col items-center">
+        <%- include('partials/header') %>
+            <div class="container max-w-6xl p-4">
+                <!-- Logged in Status -->
+                <div class="bg-green-200 text-green-800 text-sm font-semibold p-2 rounded mb-4">
+                    ✓ You are logged in
+                </div>
+                <!-- Profile Header -->
+                <div class="bg-white rounded-lg shadow p-6 mb-4">
+                    <h2 class="text-xl font-semibold text-center mb-4">Your Profile</h2>
+                    <div class="bg-blue-500 text-white p-4 rounded-lg flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center">
+                            <span class="text-blue-500 font-bold text-xl">
+                                <%= user.name.charAt(0) %>
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">
+                                <%= user.name.toUpperCase() %>
+                            </h3>
+                            <p class="text-sm">✉ <%= user.email %>
+                            </p>
+                            <p class="text-sm">📅 Member since <%= user.createdAt.toLocaleDateString() %>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Stats -->
+                    <div class="flex justify-end mt-4 text-gray-600">
+                        <div><strong>Last Active: </strong>
+                            <%= user.updatedAt.toLocaleDateString() %>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="flex justify-evenly mt-4">
+                    <a href="ediit/profile" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">✏️ Edit
+                        Profile</a>
+                    <a href="change/password" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">🔑 Change
+                        Password</a>
+                </div>
+            </div>
+    </body>
+
+</html>
