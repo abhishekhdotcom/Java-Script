@@ -1,0 +1,31 @@
+{
+  "name": "tt_v103_dbms_transactions_for_secure_email_verify",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "@Abhishekhdotcom",
+  "license": "ISC",
+  "description": "DBMS Transactions Use For Secure Email Verification by Vinod Thapa sir (24/8/2025 - 0:08PM)",
+  "dependencies": {
+    "argon2": "^0.43.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "nodemailer": "^7.0.5",
+    "request-ip": "^3.3.0",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}
