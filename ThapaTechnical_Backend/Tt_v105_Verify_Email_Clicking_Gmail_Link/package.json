@@ -1,6 +1,7 @@
 {
   "name": "tt_v105_verify_email_clicking_gmail_link",
   "version": "1.0.0",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",

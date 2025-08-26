@@ -1,6 +1,7 @@
 {
   "name": "tt_v104_url_api_improve_emailverifylink",
   "version": "1.0.0",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",

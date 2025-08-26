@@ -1,6 +1,7 @@
 {
   "name": "tt_v107__using_sql_joins_for_fase_queries",
   "version": "1.0.0",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",

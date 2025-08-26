@@ -1,6 +1,7 @@
 {
   "name": "tt_v103_dbms_transactions_for_secure_email_verify",
   "version": "1.0.0",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
