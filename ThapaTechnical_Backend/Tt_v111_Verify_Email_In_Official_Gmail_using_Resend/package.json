@@ -1,0 +1,33 @@
+{
+  "name": "tt_v111_verify_email_in_official_gmail_using_resend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "@Abhishekhdotcom",
+  "license": "ISC",
+  "description": "Verify Email in official gmail using Resend by Vinod Thapa sir (13/9/2025 - 8:26PM)",
+  "dependencies": {
+    "argon2": "^0.43.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.4",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mjml": "^4.15.3",
+    "mysql2": "^3.14.3",
+    "request-ip": "^3.3.0",
+    "resend": "^6.0.3",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4"
+  }
+}
